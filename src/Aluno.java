@@ -125,11 +125,13 @@ private void ExecutarOpcao1(){
             case 3:
             
                
-                        System.out.println("Digite o codigo do aluno para remover: ");
-                        System.out.println("");
+                        
                         System.out.println("-----------------------------------------------------");
                         System.out.println("--Lista de alunos--");          
-                        this.ImprimeLista();       
+                        this.ImprimeLista(); 
+                        System.out.println("");      
+                        System.out.println("Digite o codigo do aluno para remover: ");
+                        System.out.println("");
                         System.out.println("-----------------------------------------------------");
                         System.out.println("");
                         int codi = this.scan.nextInt();   
@@ -151,6 +153,7 @@ private void ExecutarOpcao1(){
             case 4:
             System.out.println("");
             System.out.println("-----------------------------------------------------");
+            System.out.println("");
             System.out.println("--Lista de alunos--");          
             this.ImprimeLista();       
             System.out.println("-----------------------------------------------------");
@@ -158,15 +161,18 @@ private void ExecutarOpcao1(){
 
             break;
             case 5:
-            
+            System.out.println("----------------------------------------------------");
+             this.ImprimeLista();
             System.out.println("");
             System.out.println("1 - Adicionar a nota A1 do aluno selecionado");
             System.out.println("2 - Adicionar a nota P1 do aluno selecionado");
             System.out.println("3 - Adicionar a nota A2 do aluno selecionado");
             System.out.println("4 - Adicionar a nota P2 do aluno selecionado");
             System.out.println("5 - Calcular a Média do Aluno (usando a fórmula abaixo), exibir o resultado, e se o aluno foi aprovado ou reprovado. ");
-            System.out.println("");
+            System.out.println("");           
             System.out.println("----------------------------------------------------");
+            
+                        System.out.println("");
                 int codig = this.scan.nextInt();
                 System.out.println("");
                     this.scan.nextLine();
@@ -335,11 +341,10 @@ private void ExecutarOpcao1(){
                         break;
                         }
                         break;              
-                        case 9:
-                        continuar = 0;
-                        break;
-                        default:
-                        System.out.println("Digite opcao valida");
+            case 9:
+            this.Executar();
+            default:
+            System.out.println("Digite opcao valida");
         }
     }
 }
@@ -371,7 +376,7 @@ private void ExecutarOpcao2(){
                     System.out.println("-----------------------------------------------------");
                     int codd5 = this.scan.nextInt();
                     System.out.println("----------------------------------------------------");        
-                    int tamm6 = this.lista.size();//size pega o tamanho.size -1 pega o ultimo.pegar o primeiro e get 0.                               
+                    int tamm6 = this.lista.size();                               
                             for(int i = 0; i<tamm6; i++){  
                                 
                                 if(codd5 == this.lista.get(i)){
@@ -386,10 +391,10 @@ private void ExecutarOpcao2(){
                                     System.out.println("Prova P2 = " + this.listaA1.get(i));
                                     
                                     double media1 = (((a1+p1)/2)+((a2+p2)/2))/2;
-                                    System.out.println("indice [" + i + "] = " + this.lista2.get(i));
+                                    System.out.println("Aluno = " + this.lista2.get(i));
                                     System.out.println("Média: " + media);  
-                                                                                                    
-                                }
+                                    System.out.println(""); 
+                                    System.out.println("----------------------------------------------------");                                 }
                                 else{
                                     contin6 = 0;
                                 }  
@@ -398,7 +403,9 @@ private void ExecutarOpcao2(){
                  break;
            
             case 2:
-                int tam = this.lista.size();//size pega o tamanho. size -1 pega o ultimo. pegar o primeiro e get 0.
+           
+            if(this.lista.size()>0){
+                int tam = this.lista.size();
                 for(int i =0; i<tam; i++){
                     double a1 = this.listaA1.get(i);
                     double p1 = this.listaP1.get(i);
@@ -406,7 +413,11 @@ private void ExecutarOpcao2(){
                     double p2 = this.listaP2.get(i);
                     double media = (((a1+p1)/2)+((a2+p2)/2))/2;
                 System.out.println("Indice[" + i + "] - " + "Codigo = " + this.lista.get(i)+" - Nome = " + this.lista2.get(i)+" - A1 = " + this.listaA1.get(i)+" - P1 = " + this.listaP1.get(i)+" - A2 = " + this.listaA2.get(i)+" - P2 = " + this.listaP2.get(i) + " - Média = "+ media);          
+                System.out.println("");
             }
+        }else{
+              this.ImprimeLista();
+        }
             break;
             case 9:
             continuar = 0;
@@ -418,9 +429,20 @@ private void ExecutarOpcao2(){
 }
 
 private void ImprimeLista(){
-    int tam = this.lista.size();//size pega o tamanho. size -1 pega o ultimo. pegar o primeiro e get 0.
-        for(int i =0; i<tam; i++){
-        System.out.println("Indice[" + i + "] - " + "Codigo = " + this.lista.get(i)+" - Nome = " + this.lista2.get(i));          
+
+    int tam = this.lista.size();
+       
+            if(tam>0){
+                 for(int i =0; i<tam; i++){
+                    System.out.println("Indice[" + i + "] - " + "Codigo = " + this.lista.get(i)+" - Nome = " + this.lista2.get(i));          
+                    System.out.println("");
+    }
+    
+}
+else{
+        System.out.println("--Lista Vazia--");
+        this.Executar();
+        
     }
 }
     
